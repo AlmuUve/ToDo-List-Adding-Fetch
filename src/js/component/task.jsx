@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import ListGroupItem from "react-bootstrap";
 
 const Task = props => {
 	return (
-		<li className="list-group-item">
-			{props.name}
+		<li className={props.done ? "strike" : ""}>
+			{props.label}
 			<i onClick={props.onMyClick} className="fas fa-trash-alt mr-4" />
+			<i onClick={props.taskDone} className="fas fa-check-circle" />
 		</li>
 	);
 };
 Task.propTypes = {
-	name: PropTypes.string,
-	onMyClick: PropTypes.func
+	label: PropTypes.string,
+	onMyClick: PropTypes.func,
+	taskDone: PropTypes.func,
+	listItems: PropTypes.array,
+	done: PropTypes.bool
 };
 export default Task;
