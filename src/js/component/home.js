@@ -9,16 +9,17 @@ export function Home() {
 	const [user, setUser] = useState("");
 	const url = "https://assets.breatheco.de/apis/fake/todos/user/";
 	let completeUrl = url.concat(user);
-	let userUrl = user;
-	const [test, setTest] = useState(false);
-	console.log(userUrl);
+	const [help, setHelp] = useState(false);
 
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
 	useEffect(
 		() => {
-			fetch(completeUrl)
+			//fetch(completeUrl)
+			fetch(
+				"https://assets.breatheco.de/apis/fake/todos/user/almuandjose"
+			)
 				.then(response => {
 					//CREAR FUNCION CREATE USER
 					if (!response.ok) {
@@ -34,23 +35,26 @@ export function Home() {
 					return response.json();
 				})
 				.then(responseAsJson => {
-					console.log("estoy ejecutando");
-					let prueba = Object.values(responseAsJson);
-					setListItems(prueba);
+					let newListItems = Object.values(responseAsJson);
+					setListItems(newListItems);
 				});
 		},
-		[test]
+		[help]
 	);
 
 	useEffect(
 		() => {
-			fetch(completeUrl, {
-				method: "PUT",
-				body: JSON.stringify(listItems),
-				headers: {
-					"Content-Type": "application/json"
+			//fetch(completeUrl,
+			fetch(
+				"https://assets.breatheco.de/apis/fake/todos/user/almuandjose",
+				{
+					method: "PUT",
+					body: JSON.stringify(listItems),
+					headers: {
+						"Content-Type": "application/json"
+					}
 				}
-			}).then(response => {
+			).then(response => {
 				return response.json();
 			});
 		},
@@ -98,65 +102,77 @@ export function Home() {
 
 	return (
 		<Fragment>
-			<form
-				onSubmit={e => {
-					e.preventDefault();
-				}}>
-				<input
-					type="text"
-					onChange={e => {
-						setValue(e.target.value);
-					}}
-					onKeyPress={e => {
-						createTask(e);
-					}}
-					placeholer="Put anotther TODO"
-					value={currentValue}
-				/>
-			</form>
-			<div>{newTask}</div>
-			<p>{user}</p>
-
-			<Button variant="primary" onClick={handleShow}>
-				Launch demo modal
-			</Button>
-
-			<Modal show={show} onHide={handleClose}>
-				<Modal.Header closeButton>
-					<Modal.Title>Modal heading</Modal.Title>
-				</Modal.Header>
-				<form
-					onSubmit={e => {
-						e.preventDefault();
-						{
-							user;
-						}
-					}}>
-					<input
-						type="text"
-						onChange={e => {
-							setUser(e.target.value);
-							console.log(completeUrl);
-							console.log(listItems);
-						}}
-						value={user}
-						placeholder="What's your name?"
-					/>
-				</form>
-				<Modal.Footer>
-					<Button variant="secondary" onClick={handleClose}>
-						Close
-					</Button>
-					<Button
-						variant="primary"
-						onClick={() => {
-							handleClose();
-							setTest(!test);
+			<content className="container-fluid">
+				<div className="row buttons">
+					<button className="btn btn-primary" onClick={handleShow}>
+						Launch demo modal
+					</button>
+					<button className="btn btn-primary " onClick={handleShow}>
+						Launch demo modal
+					</button>
+				</div>
+				<div className="row todoList">
+					<div className="col-12 bg-danger d-flex justify-content-center">
+						<h1>ToDo List</h1>
+					</div>
+					<form
+						className="col-4 bg-danger d-flex justify-content-center"
+						onSubmit={e => {
+							e.preventDefault();
 						}}>
-						Save Changes
-					</Button>
-				</Modal.Footer>
-			</Modal>
+						<input
+							className="col-12"
+							type="text"
+							onChange={e => {
+								setValue(e.target.value);
+							}}
+							onKeyPress={e => {
+								createTask(e);
+							}}
+							placeholder="Put anotther TODO"
+							value={currentValue}
+						/>
+					</form>
+				</div>
+				<div className="row d-flex justify-content-center bg-success">
+					<ul className="col-4 bg-danger">{newTask}</ul>
+				</div>
+
+				<Modal show={show} onHide={handleClose}>
+					<Modal.Header closeButton>
+						<Modal.Title>Modal heading</Modal.Title>
+					</Modal.Header>
+					<form
+						onSubmit={e => {
+							e.preventDefault();
+							{
+								user;
+							}
+						}}>
+						<input
+							type="text"
+							onChange={e => {
+								setUser(e.target.value);
+							}}
+							value={user}
+							placeholder="What's your name?"
+						/>
+					</form>
+					<Modal.Footer>
+						<Button variant="secondary" onClick={handleClose}>
+							Close
+						</Button>
+						<Button
+							variant="primary"
+							onClick={() => {
+								handleClose();
+								setHelp(!help);
+							}}>
+							Save Changes
+						</Button>
+					</Modal.Footer>
+				</Modal>
+			</content>
 		</Fragment>
 	);
 }

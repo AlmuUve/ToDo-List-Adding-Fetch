@@ -3,3 +3,48 @@
 .strike{
     text-decoration: line-through;
 }
+li{
+    list-style: none;
+    display:flex;
+    margin-top: 4px;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+	padding:1.1rem 1rem;
+	justify-content:space-between;
+	align-items:center;
+    background:rgba(255,255,255,0.1);
+    border-radius: 0.7rem;
+}
+li:last-child {
+  margin-bottom: 0.5rem;
+}
+li:first-child {
+  margin-top: 0.5rem;
+}
+// .icons{
+//     cursor: pointer;
+
+// }
+i {
+    margin: 0 0.3rem;
+    color: grey;
+}
+input{
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 0.7rem;
+    border: none;
+    margin-top: 0.5rem;
+}
+
+
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+.todoList{
+    display: flex;
+    justify-content: center;
+    background-color: blue;
+}

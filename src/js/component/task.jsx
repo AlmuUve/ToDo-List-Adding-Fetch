@@ -5,8 +5,16 @@ const Task = props => {
 	return (
 		<li className={props.done ? "strike" : ""}>
 			{props.label}
-			<i onClick={props.onMyClick} className="fas fa-trash-alt mr-4" />
-			<i onClick={props.taskDone} className="fas fa-check-circle" />
+			<div className="icons">
+				<i
+					onClick={props.taskDone}
+					className="fas fa-check-circle justify-content-end"
+				/>
+				<i
+					onClick={props.onMyClick}
+					className="fas fa-trash-alt mr-4"
+				/>
+			</div>
 		</li>
 	);
 };
