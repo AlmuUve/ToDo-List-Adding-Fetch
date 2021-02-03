@@ -104,14 +104,14 @@ export function Home() {
 		<Fragment>
 			<content className="container-fluid">
 				<div className="row todoList">
-					<h1 className="col-lg-4 col-sm-12 bg-danger">ToDo List</h1>
+					<h1 className="col-lg-4 col-sm-12">ToDo List</h1>
 					<form
-						className="col-lg-4 col-sm-12 bg-danger"
+						className="col-lg-4 col-sm-12"
 						onSubmit={e => {
 							e.preventDefault();
 						}}>
 						<input
-							className="col-12"
+							className="input col-12"
 							type="text"
 							onChange={e => {
 								setValue(e.target.value);
@@ -123,16 +123,12 @@ export function Home() {
 							value={currentValue}
 						/>
 					</form>
-					<ul className="col-lg-4 col-sm-12 bg-danger">{newTask}</ul>
-					<div className="col-lg-4 col-sm-12 bg-danger buttons">
-						<button
-							className="btn btn-primary mr-1"
-							onClick={handleShow}>
+					<ul className="list col-lg-4 col-sm-12">{newTask}</ul>
+					<div className="col-lg-4 col-sm-12 buttons">
+						<button className="btn mr-1" onClick={handleShow}>
 							Login
 						</button>
-						<button
-							className="btn btn-primary"
-							onClick={handleShow}>
+						<button className="btn" onClick={handleShow}>
 							New User
 						</button>
 					</div>

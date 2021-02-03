@@ -1,10 +1,14 @@
 @import "~bootstrap/scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
 
 //COMPONENTE
 .strike{
     text-decoration: line-through;
+    color: #284283;
 }
 li{
+    font-family:"Reenie Beanie",arial,sans-serif;
+    font-size: 2rem;
     list-style: none;
     display:flex;
     margin-top: 4px;
@@ -13,8 +17,8 @@ li{
 	padding:1.1rem 1rem;
 	justify-content:space-between;
 	align-items:center;
-    background:rgba(255,255,255,0.1);
-    border-radius: 0.7rem;
+    background: rgba(251, 227, 100, 0.5);
+    border-bottom: rgba(255,255,255,1);
 }
 li:last-child {
   margin-bottom: 0.5rem;
@@ -31,9 +35,16 @@ input{
     text-align: center;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    border-radius: 0.7rem;
     border: none;
     margin-top: 0.5rem;
+    background-color: rgba(251, 227, 100, 0.5);
+}
+.input:focus{
+    outline: none;
+}
+.fas {
+    color: white;
+    font-size: 1rem;
 }
 
 //ESTRUCTURA
@@ -43,6 +54,9 @@ input{
     align-items: center;
     flex-direction: column;
 }
+form{
+    background-color: #E2CC5A;
+}
 h1{  
     text-align: center;
     border-radius: 0.7rem 0.7rem 0 0;
@@ -50,6 +64,8 @@ h1{
 }
 ul {
     margin-bottom: 0;
+    background-color: #E2CC5A;
+    box-shadow:5px 5px 7px rgba(33,33,33,1);
 }
 .buttons {
     display: flex;
