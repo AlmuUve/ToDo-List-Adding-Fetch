@@ -1,5 +1,6 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
+//COMPONENTE
 .strike{
     text-decoration: line-through;
 }
@@ -21,13 +22,10 @@ li:last-child {
 li:first-child {
   margin-top: 0.5rem;
 }
-// .icons{
-//     cursor: pointer;
-
-// }
 i {
     margin: 0 0.3rem;
     color: grey;
+    cursor: pointer;
 }
 input{
     text-align: center;
@@ -38,13 +36,24 @@ input{
     margin-top: 0.5rem;
 }
 
-
-.buttons{
-    display: flex;
-    justify-content: center;
-}
+//ESTRUCTURA
 .todoList{
     display: flex;
     justify-content: center;
-    background-color: blue;
+    align-items: center;
+    flex-direction: column;
+}
+h1{  
+    text-align: center;
+    border-radius: 0.7rem 0.7rem 0 0;
+    margin-bottom: 0;
+}
+ul {
+    margin-bottom: 0;
+}
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 0.5rem;
+    border-radius: 0 0 0.7rem 0.7rem;
 }

@@ -103,20 +103,10 @@ export function Home() {
 	return (
 		<Fragment>
 			<content className="container-fluid">
-				<div className="row buttons">
-					<button className="btn btn-primary" onClick={handleShow}>
-						Launch demo modal
-					</button>
-					<button className="btn btn-primary " onClick={handleShow}>
-						Launch demo modal
-					</button>
-				</div>
 				<div className="row todoList">
-					<div className="col-12 bg-danger d-flex justify-content-center">
-						<h1>ToDo List</h1>
-					</div>
+					<h1 className="col-lg-4 col-sm-12 bg-danger">ToDo List</h1>
 					<form
-						className="col-4 bg-danger d-flex justify-content-center"
+						className="col-lg-4 col-sm-12 bg-danger"
 						onSubmit={e => {
 							e.preventDefault();
 						}}>
@@ -133,9 +123,19 @@ export function Home() {
 							value={currentValue}
 						/>
 					</form>
-				</div>
-				<div className="row d-flex justify-content-center bg-success">
-					<ul className="col-4 bg-danger">{newTask}</ul>
+					<ul className="col-lg-4 col-sm-12 bg-danger">{newTask}</ul>
+					<div className="col-lg-4 col-sm-12 bg-danger buttons">
+						<button
+							className="btn btn-primary mr-1"
+							onClick={handleShow}>
+							Login
+						</button>
+						<button
+							className="btn btn-primary"
+							onClick={handleShow}>
+							New User
+						</button>
+					</div>
 				</div>
 
 				<Modal show={show} onHide={handleClose}>
