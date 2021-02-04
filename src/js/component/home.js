@@ -104,7 +104,6 @@ export function Home() {
 		<Fragment>
 			<content className="container-fluid">
 				<div className="row todoList">
-					<h1 className="col-lg-4 col-sm-12">ToDo List</h1>
 					<form
 						className="col-lg-4 col-sm-12"
 						onSubmit={e => {
@@ -119,17 +118,26 @@ export function Home() {
 							onKeyPress={e => {
 								createTask(e);
 							}}
-							placeholder="Put anotther TODO"
+							placeholder="Something to remember?"
 							value={currentValue}
 						/>
 					</form>
 					<ul className="list col-lg-4 col-sm-12">{newTask}</ul>
 					<div className="col-lg-4 col-sm-12 buttons">
-						<button className="btn mr-1" onClick={handleShow}>
-							Login
+						<button
+							className="btn mr-1 button_findList"
+							onClick={handleShow}>
+							Find a List
 						</button>
-						<button className="btn" onClick={handleShow}>
-							New User
+						<button
+							className="btn mr-1 button_createList"
+							onClick={handleShow}>
+							Create List
+						</button>
+						<button
+							className="btn button_deleteList"
+							onClick={handleShow}>
+							Delete List
 						</button>
 					</div>
 				</div>
@@ -146,6 +154,7 @@ export function Home() {
 							}
 						}}>
 						<input
+							className="modal_input"
 							type="text"
 							onChange={e => {
 								setUser(e.target.value);
@@ -156,7 +165,7 @@ export function Home() {
 					</form>
 					<Modal.Footer>
 						<Button variant="secondary" onClick={handleClose}>
-							Close
+							X
 						</Button>
 						<Button
 							variant="primary"

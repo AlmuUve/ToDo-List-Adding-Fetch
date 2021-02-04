@@ -19,6 +19,7 @@ li{
 	align-items:center;
     background: rgba(251, 227, 100, 0.5);
     border-bottom: rgba(255,255,255,1);
+    color: #284283;
 }
 li:last-child {
   margin-bottom: 0.5rem;
@@ -31,7 +32,7 @@ i {
     color: grey;
     cursor: pointer;
 }
-input{
+.input{
     text-align: center;
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -46,8 +47,28 @@ input{
     color: white;
     font-size: 1rem;
 }
+.button_findList{
+    background-color: #e091c2;
+    color: whitesmoke;
+}
+
+.button_createList{
+    background-color: #00b5ff;
+    color: whitesmoke;
+}
+
+.button_deleteList{
+    background-color: #00ff5d;
+    color: whitesmoke;
+}
 
 //ESTRUCTURA
+body{
+    background-image: url(https://images.pexels.com/photos/399161/pexels-photo-399161.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
 .todoList{
     display: flex;
     justify-content: center;
@@ -65,7 +86,6 @@ h1{
 ul {
     margin-bottom: 0;
     background-color: #E2CC5A;
-    box-shadow:5px 5px 7px rgba(33,33,33,1);
 }
 .buttons {
     display: flex;
