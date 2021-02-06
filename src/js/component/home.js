@@ -10,25 +10,17 @@ export function Home() {
 	const url = "https://assets.breatheco.de/apis/fake/todos/user/";
 	let completeUrl = url.concat(user);
 	const [help, setHelp] = useState(false);
+	const welcome = document.querySelector("#welcome");
 
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
 	useEffect(
 		() => {
-			fetch(
-				"https://assets.breatheco.de/apis/fake/todos/user/almuandjose"
-			)
+			fetch(completeUrl)
 				.then(response => {
 					if (!response.ok) {
-						const requestOptions = {
-							method: "POST",
-							headers: { "Content-Type": "application/json" },
-							body: JSON.stringify([])
-						};
-						fetch(completeUrl, requestOptions).then(response => {
-							response.json();
-						});
+						createNewUser();
 					}
 					return response.json();
 				})
@@ -42,33 +34,43 @@ export function Home() {
 
 	useEffect(
 		() => {
-			fetch(
-				"https://assets.breatheco.de/apis/fake/todos/user/almuandjose",
-				{
-					method: "PUT",
-					body: JSON.stringify(listItems),
-					headers: {
-						"Content-Type": "application/json"
-					}
+			fetch(completeUrl, {
+				method: "PUT",
+				body: JSON.stringify(listItems),
+				headers: {
+					"Content-Type": "application/json"
 				}
-			).then(response => {
+			}).then(response => {
 				return response.json();
 			});
 		},
 		[listItems]
 	);
 
-	// useEffect(
-	// 	() => {
-	// 		fetch(
-	// 			"https://assets.breatheco.de/apis/fake/todos/user/almuandjose",
-	// 			{
-	// 				method: "DELETE"
-	// 			}
-	// 		).then(() => setListItems("Delete successful"));
-	// 	},
-	// 	[listItems]
-	// );
+	const createNewUser = () => {
+		const requestOptions = {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify([])
+		};
+		fetch(completeUrl, requestOptions).then(response => {
+			setListItems([]);
+			response.json();
+		});
+	};
+
+	const removeList = () => {
+		fetch(completeUrl, {
+			method: "DELETE"
+		}).then(() => {
+			console.log("removed");
+		});
+		setListItems([]);
+		setUser("");
+		welcome.innerHTML = "tu lista se ha borrado correctamente";
+	};
+	//HACER FUNCION PARA BOTON LOGOUT
+	const logOut = () => {};
 
 	const createTask = e => {
 		if (e.key == "Enter") {
@@ -110,6 +112,11 @@ export function Home() {
 		);
 	});
 
+	const showWelcome = () => {
+		welcome.classList.remove("d-none");
+		welcome.innerHTML = "Welcome " + user;
+	};
+
 	return (
 		<Fragment>
 			<content className="container-fluid">
@@ -119,6 +126,7 @@ export function Home() {
 						onSubmit={e => {
 							e.preventDefault();
 						}}>
+						<h1 id="welcome" className="d-none" />
 						<input
 							className="input col-12"
 							type="text"
@@ -146,7 +154,9 @@ export function Home() {
 						</button>
 						<button
 							className="btn button_deleteList"
-							onClick={handleShow}>
+							onClick={() => {
+								removeList();
+							}}>
 							Delete List
 						</button>
 					</div>
@@ -182,6 +192,7 @@ export function Home() {
 							onClick={() => {
 								handleClose();
 								setHelp(!help);
+								showWelcome();
 							}}>
 							Save
 						</Button>
