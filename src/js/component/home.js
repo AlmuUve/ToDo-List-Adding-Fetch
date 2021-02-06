@@ -10,10 +10,12 @@ export function Home() {
 	const url = "https://assets.breatheco.de/apis/fake/todos/user/";
 	let completeUrl = url.concat(user);
 	const [help, setHelp] = useState(false);
-	const welcome = document.querySelector("#welcome");
+	const message = document.querySelector("#message");
 
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
+
+	//CALLING API
 
 	useEffect(
 		() => {
@@ -67,10 +69,29 @@ export function Home() {
 		});
 		setListItems([]);
 		setUser("");
-		welcome.innerHTML = "tu lista se ha borrado correctamente";
+		message.innerHTML = user + " your list has been successfully deleted";
+		setTimeout(function() {
+			message.classList.add("d-none");
+		}, 3000);
 	};
-	//HACER FUNCION PARA BOTON LOGOUT
-	const logOut = () => {};
+
+	// AUX FUNCTIONS
+
+	const logOut = () => {
+		message.classList.remove("d-none");
+		message.innerHTML = "See you soon " + user;
+		setTimeout(function() {
+			message.classList.add("d-none");
+		}, 3000);
+		setListItems([]);
+	};
+
+	const showWelcome = () => {
+		message.classList.remove("d-none");
+		message.innerHTML = "Welcome " + user;
+	};
+
+	//CREATE LIST - DELETE TASK - TASKDONE
 
 	const createTask = e => {
 		if (e.key == "Enter") {
@@ -81,7 +102,6 @@ export function Home() {
 					done: false
 				}
 			]);
-
 			setValue("");
 		}
 	};
@@ -95,6 +115,8 @@ export function Home() {
 	const clickDelete = targetIndex => {
 		setListItems(listItems.filter((_, index) => index !== targetIndex));
 	};
+
+	// MAP COMPONENT
 
 	let newTask = listItems.map((item, index) => {
 		return (
@@ -112,11 +134,6 @@ export function Home() {
 		);
 	});
 
-	const showWelcome = () => {
-		welcome.classList.remove("d-none");
-		welcome.innerHTML = "Welcome " + user;
-	};
-
 	return (
 		<Fragment>
 			<content className="container-fluid">
@@ -126,7 +143,7 @@ export function Home() {
 						onSubmit={e => {
 							e.preventDefault();
 						}}>
-						<h1 id="welcome" className="d-none" />
+						<h1 id="message" className="d-none" />
 						<input
 							className="input col-12"
 							type="text"
@@ -145,12 +162,12 @@ export function Home() {
 						<button
 							className="btn mr-1 button_findList"
 							onClick={handleShow}>
-							Find a List
+							Login
 						</button>
 						<button
 							className="btn mr-1 button_createList"
-							onClick={handleShow}>
-							Create List
+							onClick={() => logOut()}>
+							Logout
 						</button>
 						<button
 							className="btn button_deleteList"
