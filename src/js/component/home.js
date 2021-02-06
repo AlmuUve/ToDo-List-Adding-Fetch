@@ -16,12 +16,10 @@ export function Home() {
 
 	useEffect(
 		() => {
-			//fetch(completeUrl)
 			fetch(
 				"https://assets.breatheco.de/apis/fake/todos/user/almuandjose"
 			)
 				.then(response => {
-					//CREAR FUNCION CREATE USER
 					if (!response.ok) {
 						const requestOptions = {
 							method: "POST",
@@ -44,7 +42,6 @@ export function Home() {
 
 	useEffect(
 		() => {
-			//fetch(completeUrl,
 			fetch(
 				"https://assets.breatheco.de/apis/fake/todos/user/almuandjose",
 				{
@@ -60,6 +57,18 @@ export function Home() {
 		},
 		[listItems]
 	);
+
+	// useEffect(
+	// 	() => {
+	// 		fetch(
+	// 			"https://assets.breatheco.de/apis/fake/todos/user/almuandjose",
+	// 			{
+	// 				method: "DELETE"
+	// 			}
+	// 		).then(() => setListItems("Delete successful"));
+	// 	},
+	// 	[listItems]
+	// );
 
 	const createTask = e => {
 		if (e.key == "Enter") {
@@ -80,6 +89,7 @@ export function Home() {
 		taskCompleted[index].done = true;
 		setListItems(taskCompleted);
 	};
+
 	const clickDelete = targetIndex => {
 		setListItems(listItems.filter((_, index) => index !== targetIndex));
 	};
@@ -142,11 +152,13 @@ export function Home() {
 					</div>
 				</div>
 
-				<Modal show={show} onHide={handleClose}>
-					<Modal.Header closeButton>
-						<Modal.Title>Modal heading</Modal.Title>
-					</Modal.Header>
+				<Modal
+					className="modal_container"
+					show={show}
+					onHide={handleClose}>
+					<Modal.Header className="modal_header" closeButton />
 					<form
+						className="modal_form"
 						onSubmit={e => {
 							e.preventDefault();
 							{
@@ -163,17 +175,15 @@ export function Home() {
 							placeholder="What's your name?"
 						/>
 					</form>
-					<Modal.Footer>
-						<Button variant="secondary" onClick={handleClose}>
-							X
-						</Button>
+					<Modal.Footer className="modal_footer">
 						<Button
+							className="modal_button"
 							variant="primary"
 							onClick={() => {
 								handleClose();
 								setHelp(!help);
 							}}>
-							Save Changes
+							Save
 						</Button>
 					</Modal.Footer>
 				</Modal>

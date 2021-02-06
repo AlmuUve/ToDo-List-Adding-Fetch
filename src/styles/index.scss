@@ -1,5 +1,7 @@
 @import "~bootstrap/scss/bootstrap.scss";
 @import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
 
 //COMPONENTE
 .strike{
@@ -43,23 +45,52 @@ i {
 .input:focus{
     outline: none;
 }
+.input[type="text"]{
+    font-family:"Reenie Beanie",arial,sans-serif;
+    color: #284283;
+    font-size: 2rem;
+}
+.input::-webkit-input-placeholder {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.3rem;
+}
 .fas {
     color: white;
     font-size: 1rem;
 }
 .button_findList{
     background-color: #e091c2;
+    border-radius: 0px;
     color: whitesmoke;
 }
-
+.button_findList:hover{
+    background-color: #dd63ae;
+    border: #dd63ae;
+    border-radius: 0px;
+    color: whitesmoke;
+    transform: translateX(2px);
+}
 .button_createList{
     background-color: #00b5ff;
+    border-radius: 0px;
     color: whitesmoke;
 }
-
+.button_createList:hover{
+    background-color: #169ed4;
+    border-radius: 0px;
+    color: whitesmoke;
+    transform: translateX(2px);
+}
 .button_deleteList{
     background-color: #00ff5d;
+    border-radius: 0px;
     color: whitesmoke;
+}
+.button_deleteList:hover{
+    background-color: #1acc5b;
+    border-radius: 0px;
+    color: whitesmoke;
+    transform: translateX(2px);
 }
 
 //ESTRUCTURA
@@ -68,6 +99,8 @@ body{
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2rem;
 }
 .todoList{
     display: flex;
@@ -92,4 +125,51 @@ ul {
     justify-content: flex-end;
     padding-bottom: 0.5rem;
     border-radius: 0 0 0.7rem 0.7rem;
+}
+
+//MODAL
+.modal-content{
+    border-radius: 0px;
+    border:none;
+    background-color: #E2CC5A;
+}
+
+.modal_header{
+    background-color: #E2CC5A;
+    border:none;
+}
+
+.modal_input{
+    background-color:rgba(251, 227, 100, 0.5);
+    margin-left: 3rem;
+    border: none;
+    width: 75%;
+    height: 2.5rem;
+}
+
+.modal_input:focus{
+    outline: none;
+}
+
+.modal_input[type="text"]{
+    font-family: 'Open Sans', sans-serif;
+    padding-left: 0.7rem;
+    color: grey;
+    font-size: 1.3rem;
+}
+.modal_footer{
+    background-color: #E2CC5A;
+    border:none;
+}
+.modal_button{
+    background-color: #e091c2;
+    border: #e091c2;
+    border-radius: 0px;
+    color: whitesmoke;
+}
+.modal_button:hover{
+    background-color: #dd63ae;
+    border: #dd63ae;
+    border-radius: 0px;
+    color: whitesmoke;
 }
